@@ -1,0 +1,52 @@
+"""
+TODO: Arrange NF Assignment based on Assignment Type
+
+Types of assignment(listed by priority):
+*TF
+*Review
+*PS
+*Sopel
+*Suplemen
+*TO
+*Pembahasan
+
+Priority:
+MAT
+FIS
+KIM
+BIO
+B INDO
+B INGG
+TPA/TPS
+
+"""
+
+def search(list, item):
+    for i in range(len(list)):
+        if list[i] == item:
+            return i
+    return -1
+
+
+
+priority_mapel = ["MATEMATIKA","FISIKA","KIMIA","BIOLOGI","IND","ING","TPA","TPS"]
+priority_subtes = ["TF","REVIEW","Pembahasan",""]
+
+name_split = ['string']
+new_filename,mapel_index,subtes_index,subtes_num = '',-1,-1,0
+subtes_found = 0
+
+for sub_name in name_split:
+    sub_name = sub_name.replace('.',' ')
+
+    mapel_index = search(priority_mapel,sub_name)
+    if subtes_found:
+        continue
+    else : 
+        subtes_index = search(priority_subtes, sub_name)
+        if subtes_index > -1:
+            subtes_num = sub_name[-1]
+            subtes_found = 1
+
+new_filename = priority_mapel[mapel_index] + " " + priority_subtes[subtes_index] + subtes_num
+
